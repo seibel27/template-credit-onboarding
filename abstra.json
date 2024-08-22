@@ -4,24 +4,22 @@
     "name": "Untitled Workspace",
     "theme": "#f9f9f9",
     "logo_url": "logo.png",
+    "favicon_url": null,
     "brand_name": "Credit Requests",
     "main_color": "#0023FF",
     "font_color": null,
     "font_family": "Inter",
-    "sidebar": [
-      {
-        "id": "order-request-form",
-        "name": "Order request form",
-        "path": "order-request-form",
-        "type": "form",
-        "visible": false
-      }
-    ]
+    "language": "en"
   },
-  "visualization": [],
   "kanban": {
     "access_control": {
       "is_public": false,
+      "required_roles": []
+    }
+  },
+  "home": {
+    "access_control": {
+      "is_public": true,
       "required_roles": []
     }
   },
@@ -81,8 +79,8 @@
       "restart_button_text": null,
       "file": "manual_review.py",
       "workflow_position": [
-        747.980343031676,
-        332.94062523175563
+        480,
+        96
       ],
       "transitions": [
         {
@@ -110,8 +108,8 @@
       "title": "Credit engine",
       "is_initial": false,
       "workflow_position": [
-        -21.516466301152263,
-        -9.228763364173403
+        -132,
+        -12
       ],
       "transitions": [
         {
@@ -129,8 +127,8 @@
       "title": "Automatic review",
       "is_initial": false,
       "workflow_position": [
-        742.9116684583314,
-        -301.51229084557326
+        468,
+        -156
       ],
       "transitions": [
         {
@@ -148,8 +146,8 @@
       "title": "Internal notification",
       "is_initial": false,
       "workflow_position": [
-        1449.9245064045638,
-        322.9532944691653
+        1080,
+        84
       ],
       "transitions": []
     },
@@ -159,8 +157,8 @@
       "title": "Approval email",
       "is_initial": false,
       "workflow_position": [
-        1437.9654417219867,
-        -309.5427547615571
+        1080,
+        -132
       ],
       "transitions": []
     }
@@ -171,8 +169,8 @@
       "id": "3q5z75h",
       "variable_name": "score",
       "workflow_position": [
-        419.7356788709259,
-        -11.319859231601697
+        180,
+        -12
       ],
       "transitions": [
         {
@@ -195,8 +193,8 @@
       "id": "wu5q957",
       "variable_name": "result",
       "workflow_position": [
-        1062.9761368937448,
-        2.0342768127167687
+        780,
+        -24
       ],
       "transitions": [
         {
@@ -216,8 +214,5 @@
       ]
     }
   ],
-  "signup_policy": {
-    "email_patterns": []
-  },
-  "version": "6.0"
+  "version": "11.0"
 }
