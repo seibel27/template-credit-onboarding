@@ -34,6 +34,13 @@ To use this project, some initial configurations are necessary:
       ```sh
       pip install -r requirements.txt
       ```
+4. **Access Control**: The generated form is protected by default. For local testing, no additional configuration is necessary. However, for cloud usage, you need to add your own access rules. For more information on how to configure access control, refer to the [Abstra access control documentation](https://docs.abstra.io/concepts/access-control).
+
+5. **Local Usage**: To access the local editor with the project, use the following command:
+
+   ```sh
+      abstra editor path/to/your/project/folder/
+   ```
 
 ## General Workflow:
 To implement this system use the following scripts:
