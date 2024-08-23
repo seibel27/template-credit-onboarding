@@ -14,17 +14,22 @@ To customize this template for your team and build a lot more, [book a demonstra
 To use this project, some initial configurations are necessary:
 
 1. **Python Version**: Ensure Python version 3.9 or higher is installed on your system.
-2. **Environment Variables**:
+2. **Integrations**: To connect to Slack, this template uses Abstra connectors. To connect, simply open your project in [Abstra Cloud Console](https://cloud.abstra.io/projects/), add the Slack connector, and authorize it.
+3. **Environment Variables**:
 
    The following environment variables are required for both local development and online deployment:
 
-   - `SLACK_BOT_TOKEN`: Slack Token to send alerts on Slack about rejected requests
+   - `SLACK_CHANNEL_NAME`: Slack channel where the credit rejection notification will be sent
    - `SEDGRID_API_KEY`: API Token to use Sendgrid email service
-   - `SENDER_EMAIL`: Email address from which the credit approval notification will be sent.
+   - `SENDER_EMAIL`: Email address from which the credit approval notification will be sent
+
+    In the scripts, we assume that a credit team is involved in the credit approval process. The `.env` variable below is the email used by this team to receive the credit applications:
+
+   - `CREDIT_TEAM_EMAIL`: Credit team email
   
    For local development, create a `.env` file at the root of the project and add the variables listed above (as in `.env.examples`). For online deployment, configure these variables in your [environment settings](https://docs.abstra.io/cloud/envvars).
 
-3. **Dependencies**: To install the necessary dependencies for this project, a `requirements.txt` file is provided. This file includes all the required libraries.
+5. **Dependencies**: To install the necessary dependencies for this project, a `requirements.txt` file is provided. This file includes all the required libraries.
 
    Follow these steps to install the dependencies:
 
@@ -34,9 +39,9 @@ To use this project, some initial configurations are necessary:
       ```sh
       pip install -r requirements.txt
       ```
-4. **Access Control**: The generated form is protected by default. For local testing, no additional configuration is necessary. However, for cloud usage, you need to add your own access rules. For more information on how to configure access control, refer to the [Abstra access control documentation](https://docs.abstra.io/concepts/access-control).
+6. **Access Control**: The generated form is protected by default. For local testing, no additional configuration is necessary. However, for cloud usage, you need to add your own access rules. For more information on how to configure access control, refer to the [Abstra access control documentation](https://docs.abstra.io/concepts/access-control).
 
-5. **Local Usage**: To access the local editor with the project, use the following command:
+7. **Local Usage**: To access the local editor with the project, use the following command:
 
    ```sh
       abstra editor path/to/your/project/folder/
