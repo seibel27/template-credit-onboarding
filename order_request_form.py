@@ -1,3 +1,4 @@
+import os
 from abstra.forms import *
 from abstra.workflows import set_data
 
@@ -35,6 +36,7 @@ set_data("income", income_data["income"])
 set_data("employer", income_data["employer"])
 set_data("loan_amount", loan_data["loan_amount"])
 set_data("installments", loan_data["installments"])
+set_data("review_email", os.environ.get("CREDIT_TEAM_EMAIL"))
 
 display_markdown("""
 # ✨ Request received!

@@ -1,11 +1,11 @@
 from abstra.workflows import get_data
 from dotenv import load_dotenv
+from abstra.connectors import get_access_token
 import os
 import requests
 
 load_dotenv()
-slack_token = os.environ.get("SLACK_BOT_TOKEN")
-
+slack_token = get_access_token("slack").token
 name = get_data("name")
 email = get_data("email")
 income = get_data("income")
@@ -20,7 +20,7 @@ reviewing_user = get_data("reviewing_user")
 res = requests.post(
         'https://slack.com/api/chat.postMessage',
     json={
-        'channel': 'credit-onboarding-example',
+        'channel': os.environ.get("SLACK_CHANNEL_NAME"),
         'text': f"""
 💰🚫 New loan request denied. Information:
 

@@ -13,7 +13,7 @@
   },
   "kanban": {
     "access_control": {
-      "is_public": false,
+      "is_public": true,
       "required_roles": []
     }
   },
@@ -79,8 +79,8 @@
       "restart_button_text": null,
       "file": "manual_review.py",
       "workflow_position": [
-        480,
-        96
+        480.0,
+        96.0
       ],
       "transitions": [
         {
@@ -92,8 +92,8 @@
         }
       ],
       "notification_trigger": {
-        "variable_name": "assignee_emails",
-        "enabled": false
+        "variable_name": "review_email",
+        "enabled": true
       },
       "access_control": {
         "is_public": true,
@@ -108,8 +108,8 @@
       "title": "Credit engine",
       "is_initial": false,
       "workflow_position": [
-        -132,
-        -12
+        -132.0,
+        -12.0
       ],
       "transitions": [
         {
@@ -127,8 +127,8 @@
       "title": "Automatic review",
       "is_initial": false,
       "workflow_position": [
-        468,
-        -156
+        468.0,
+        -156.0
       ],
       "transitions": [
         {
@@ -146,8 +146,8 @@
       "title": "Internal notification",
       "is_initial": false,
       "workflow_position": [
-        1080,
-        84
+        1080.0,
+        84.0
       ],
       "transitions": []
     },
@@ -157,8 +157,8 @@
       "title": "Approval email",
       "is_initial": false,
       "workflow_position": [
-        1080,
-        -132
+        1080.0,
+        -132.0
       ],
       "transitions": []
     }
@@ -169,8 +169,8 @@
       "id": "3q5z75h",
       "variable_name": "score",
       "workflow_position": [
-        180,
-        -12
+        180.0,
+        -12.0
       ],
       "transitions": [
         {
@@ -193,8 +193,8 @@
       "id": "wu5q957",
       "variable_name": "result",
       "workflow_position": [
-        780,
-        -24
+        780.0,
+        -24.0
       ],
       "transitions": [
         {
