@@ -8,7 +8,7 @@ Integrations:
 
 To customize this template for your team and build a lot more, [book a demonstration here.](https://meet.abstra.app/demo?url=template-credit-onboarding)
 
-![A credit onboarding workflow built in Abstra](https://github.com/user-attachments/assets/1b881474-bd44-4dd9-aa2b-4b74bf548267)
+![image](https://github.com/user-attachments/assets/4afdcb83-b608-48c7-b092-ef65de8859aa)
 
 ## Initial Configuration
 To use this project, some initial configurations are necessary:
