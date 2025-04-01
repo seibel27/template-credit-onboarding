@@ -2,7 +2,7 @@ from abstra.tasks import get_trigger_task, send_task
 from time import sleep
 
 task = get_trigger_task()
-payload = task.payload
+payload = task.get_payload()
 
 name = payload["name"]
 email = payload["email"]

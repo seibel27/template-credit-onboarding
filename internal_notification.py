@@ -8,7 +8,7 @@ load_dotenv()
 slack_token = get_access_token("slack").token
 
 task = get_trigger_task()
-payload = task.payload
+payload = task.get_payload()
 
 name = payload["name"]
 email = payload["email"]

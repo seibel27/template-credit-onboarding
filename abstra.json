@@ -35,8 +35,8 @@
       "restart_button_text": null,
       "file": "order_request_form.py",
       "workflow_position": [
-        -330,
-        -15
+        -330.0,
+        -15.0
       ],
       "transitions": [
         {
@@ -72,8 +72,8 @@
       "restart_button_text": null,
       "file": "manual_review.py",
       "workflow_position": [
-        465,
-        120
+        465.0,
+        120.0
       ],
       "transitions": [
         {
@@ -108,8 +108,8 @@
       "title": "Credit engine",
       "is_initial": false,
       "workflow_position": [
-        105,
-        -15
+        105.0,
+        -15.0
       ],
       "transitions": [
         {
@@ -134,8 +134,8 @@
       "title": "Automatic review",
       "is_initial": false,
       "workflow_position": [
-        468,
-        -156
+        468.0,
+        -156.0
       ],
       "transitions": [
         {
@@ -160,8 +160,8 @@
       "title": "Internal notification",
       "is_initial": false,
       "workflow_position": [
-        555,
-        -15
+        555.0,
+        -15.0
       ],
       "transitions": []
     },
@@ -171,8 +171,8 @@
       "title": "Approval email",
       "is_initial": false,
       "workflow_position": [
-        840,
-        -15
+        840.0,
+        -15.0
       ],
       "transitions": []
     }

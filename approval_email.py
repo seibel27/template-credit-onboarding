@@ -9,7 +9,7 @@ sendgrid_token = os.environ.get("SENDGRID_API_KEY")
 sender_email = os.environ.get('SENDER_EMAIL')
 
 task = get_trigger_task()
-payload = task.payload
+payload = task.get_payload()
 
 name = payload["name"]
 fname = name.split(" ")[0]

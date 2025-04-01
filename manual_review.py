@@ -19,7 +19,7 @@ user = get_user()
 
 tasks = get_tasks()
 task = tasks[0]
-payload = task.payload
+payload = task.get_payload()
 
 name = payload["name"]
 email = payload["email"]

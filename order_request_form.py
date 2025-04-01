@@ -46,9 +46,6 @@ payload = {
 
 send_task("request_data", payload)
 
-print(type(employer))
-print(employer)
-
 display_markdown("""
 # ✨ Request received!
 ### Your evaluation will take up to 10 minutes. You'll receive an email with the result.
