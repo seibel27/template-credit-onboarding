@@ -1,6 +1,6 @@
 import os
 from abstra.forms import *
-from abstra.workflows import set_data
+from abstra.tasks import send_task
 
 display_markdown("""
 <img src="https://abstracloud-webflow-assets.s3.amazonaws.com/5599illustration.gif" width="100" height="100" />
@@ -20,7 +20,7 @@ personal_data = Page() \
 income_data = Page() \
     .display("Income info", size="large") \
     .read_currency("Monthly income:", currency = "USD", placeholder = "10.000,00", key="income") \
-    .read("Current employer, if applicable:", placeholder = "Dunder Mifflin", key="employer") \
+    .read("Current employer, if applicable:", placeholder = "Dunder Mifflin", key="employer", required=False) \
     .run()
 
 loan_data = Page() \
@@ -29,14 +29,25 @@ loan_data = Page() \
     .read("Number of installments:", placeholder = "12", min=2, max=12, key="installments") \
     .run()
 
+if not income_data["employer"]:
+    employer = "Not provided"
+else:
+    employer = income_data["employer"]
 
-set_data("name", personal_data["name"])
-set_data("email", personal_data["email"])
-set_data("income", income_data["income"])
-set_data("employer", income_data["employer"])
-set_data("loan_amount", loan_data["loan_amount"])
-set_data("installments", loan_data["installments"])
-set_data("review_email", os.environ.get("CREDIT_TEAM_EMAIL"))
+payload = {
+    "name": personal_data["name"],
+    "email": personal_data["email"],
+    "income": income_data["income"],
+    "employer": employer,
+    "loan_amount": loan_data["loan_amount"],
+    "installments": loan_data["installments"],
+    "review_email": os.environ.get("CREDIT_TEAM_EMAIL")
+}
+
+send_task("request_data", payload)
+
+print(type(employer))
+print(employer)
 
 display_markdown("""
 # ✨ Request received!

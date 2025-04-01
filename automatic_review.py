@@ -1,18 +1,23 @@
-from abstra.workflows import get_data, set_data
+from abstra.tasks import get_trigger_task, send_task
 from time import sleep
 
-name = get_data("name")
-email = get_data("email")
-income = get_data("income")
-employer = get_data("employer")
-loan_amount = get_data("loan_amount")
-installments = get_data("installments")
-score = get_data("score")
+task = get_trigger_task()
+payload = task.payload
+
+name = payload["name"]
+email = payload["email"]
+income = payload["income"]
+employer = payload["employer"]
+loan_amount = payload["loan_amount"]
+installments = payload["installments"]
+score = payload["score"]
 
 if loan_amount < 100000000:
-    set_data("result", "approved")
-else: 
-    set_data("result", "rejected")
-    set_data("rejection_reason", "Loan amount too high")
+    result = "approved"
+else:
+    result = "rejected"
+    payload["rejection_reason"] = "Loan amount too high"
 
+send_task(result, payload)
+task.complete()
 sleep(10)
