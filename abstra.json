@@ -1,21 +1,14 @@
 {
   "workspace": {
-    "id": null,
     "name": "Untitled Workspace",
+    "language": "en",
     "theme": "#f9f9f9",
     "logo_url": "logo.png",
     "favicon_url": null,
     "brand_name": "Credit Requests",
     "main_color": "#0023FF",
-    "font_color": null,
     "font_family": "Inter",
-    "language": "en"
-  },
-  "kanban": {
-    "access_control": {
-      "is_public": true,
-      "required_roles": []
-    }
+    "font_color": null
   },
   "home": {
     "access_control": {
@@ -42,16 +35,16 @@
       "restart_button_text": null,
       "file": "order_request_form.py",
       "workflow_position": [
-        -495.96128921678525,
-        -6.976191032314148
+        -330,
+        -15
       ],
       "transitions": [
         {
           "target_id": "38a7lgt",
           "target_type": "scripts",
-          "type": "forms:finished",
+          "type": "task",
           "id": "npdfozm",
-          "condition_value": null
+          "task_type": "request_data"
         }
       ],
       "notification_trigger": {
@@ -79,16 +72,23 @@
       "restart_button_text": null,
       "file": "manual_review.py",
       "workflow_position": [
-        480.0,
-        96.0
+        465,
+        120
       ],
       "transitions": [
         {
-          "target_id": "wu5q957",
-          "target_type": "conditions",
-          "type": "forms:finished",
-          "id": "idrhvv6",
-          "condition_value": null
+          "target_id": "o9t6hqu",
+          "target_type": "scripts",
+          "type": "task",
+          "id": "77sf72s",
+          "task_type": "rejected"
+        },
+        {
+          "target_id": "8wmhiw2",
+          "target_type": "scripts",
+          "type": "task",
+          "id": "b4bxl3q",
+          "task_type": "approved"
         }
       ],
       "notification_trigger": {
@@ -108,16 +108,23 @@
       "title": "Credit engine",
       "is_initial": false,
       "workflow_position": [
-        -132.0,
-        -12.0
+        105,
+        -15
       ],
       "transitions": [
         {
-          "target_id": "3q5z75h",
-          "target_type": "conditions",
-          "type": "scripts:finished",
-          "id": "codl8b3",
-          "condition_value": null
+          "target_id": "3v0sim3",
+          "target_type": "scripts",
+          "type": "task",
+          "id": "2annpls",
+          "task_type": "high_score"
+        },
+        {
+          "target_id": "ghw9tnr",
+          "target_type": "forms",
+          "type": "task",
+          "id": "ekxovop",
+          "task_type": "low_score"
         }
       ]
     },
@@ -127,16 +134,23 @@
       "title": "Automatic review",
       "is_initial": false,
       "workflow_position": [
-        468.0,
-        -156.0
+        468,
+        -156
       ],
       "transitions": [
         {
-          "target_id": "wu5q957",
-          "target_type": "conditions",
-          "type": "scripts:finished",
-          "id": "3qrrazy",
-          "condition_value": null
+          "target_id": "8wmhiw2",
+          "target_type": "scripts",
+          "type": "task",
+          "id": "3jwim1l",
+          "task_type": "approved"
+        },
+        {
+          "target_id": "o9t6hqu",
+          "target_type": "scripts",
+          "type": "task",
+          "id": "spj6uf0",
+          "task_type": "rejected"
         }
       ]
     },
@@ -146,8 +160,8 @@
       "title": "Internal notification",
       "is_initial": false,
       "workflow_position": [
-        1080.0,
-        84.0
+        555,
+        -15
       ],
       "transitions": []
     },
@@ -157,62 +171,13 @@
       "title": "Approval email",
       "is_initial": false,
       "workflow_position": [
-        1080.0,
-        -132.0
+        840,
+        -15
       ],
       "transitions": []
     }
   ],
-  "iterators": [],
-  "conditions": [
-    {
-      "id": "3q5z75h",
-      "variable_name": "score",
-      "workflow_position": [
-        180.0,
-        -12.0
-      ],
-      "transitions": [
-        {
-          "target_id": "3v0sim3",
-          "target_type": "scripts",
-          "type": "conditions:patternMatched",
-          "id": "n3tqsuu",
-          "condition_value": "high"
-        },
-        {
-          "target_id": "ghw9tnr",
-          "target_type": "forms",
-          "type": "conditions:patternMatched",
-          "id": "zynkj4i",
-          "condition_value": "low"
-        }
-      ]
-    },
-    {
-      "id": "wu5q957",
-      "variable_name": "result",
-      "workflow_position": [
-        780.0,
-        -24.0
-      ],
-      "transitions": [
-        {
-          "target_id": "o9t6hqu",
-          "target_type": "scripts",
-          "type": "conditions:patternMatched",
-          "id": "kj53whe",
-          "condition_value": "rejected"
-        },
-        {
-          "target_id": "8wmhiw2",
-          "target_type": "scripts",
-          "type": "conditions:patternMatched",
-          "id": "uqama2r",
-          "condition_value": "approved"
-        }
-      ]
-    }
-  ],
-  "version": "11.0"
+  "agents": [],
+  "clients": [],
+  "version": "13.0"
 }

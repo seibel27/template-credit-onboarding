@@ -20,7 +20,7 @@ To use this project, some initial configurations are necessary:
    The following environment variables are required for both local development and online deployment:
 
    - `SLACK_CHANNEL_NAME`: Slack channel where the credit rejection notification will be sent
-   - `SEDGRID_API_KEY`: API Token to use Sendgrid email service
+   - `SENDGRID_API_KEY`: API Token to use Sendgrid email service
    - `SENDER_EMAIL`: Email address from which the credit approval notification will be sent
 
     In the scripts, we assume that a credit team is involved in the credit approval process. The `.env` variable below is the email used by this team to receive the credit applications:
