@@ -1,5 +1,5 @@
 from abstra.forms import *
-from abstra.workflows import get_data, set_data
+from abstra.tasks import get_tasks, send_task
 
 display_markdown("""
 <img src="https://abstracloud-webflow-assets.s3.amazonaws.com/7626icon.png" width="50" height="50" />
@@ -17,16 +17,20 @@ user = get_user()
 #     display("You don't have permission to access this review ❌")
 #     exit()
 
-set_data("reviewing_user", user.email)
+tasks = get_tasks()
+task = tasks[0]
+payload = task.get_payload()
 
-name = get_data("name")
-email = get_data("email")
-income = get_data("income")
-employer = get_data("employer")
-loan_amount = get_data("loan_amount")
-installments = get_data("installments")
-score = get_data("score")
-reason_low_score = get_data("reason_low_score")
+name = payload["name"]
+email = payload["email"]
+income = payload["income"]
+employer = payload["employer"]
+loan_amount = payload["loan_amount"]
+installments = payload["installments"]
+score = payload["score"]
+reason_low_score = payload["reason_low_score"]
+
+payload["reviewing_user"] = user.email
 
 
 markdown_text = f"""
@@ -79,15 +83,16 @@ selection = Page() \
 
 if selection['approval'] == "No":
     rejection_reason = read_textarea("Rejection reason")
-    text = "rejected"
-    set_data("result", "rejected")
-    set_data("rejection_reason", rejection_reason)
+    result = "rejected"
+    payload["rejection_reason"] = rejection_reason
 else:
-    set_data("result", "approved")
-    text = "approved"
+    result = "approved"
+
+send_task(result, payload)
+task.complete()
 
 display_markdown(f"""
-# Request {text}
+# Request {result}
 
 Review completed by {user.email}
                  """, end_program=True, button_text=None)

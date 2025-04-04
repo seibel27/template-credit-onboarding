@@ -1,4 +1,4 @@
-from abstra.workflows import *
+from abstra.tasks import get_trigger_task
 import os
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import *
@@ -8,15 +8,17 @@ load_dotenv()
 sendgrid_token = os.environ.get("SENDGRID_API_KEY")
 sender_email = os.environ.get('SENDER_EMAIL')
 
-name = get_data("name")
+task = get_trigger_task()
+payload = task.get_payload()
+
+name = payload["name"]
 fname = name.split(" ")[0]
-email = get_data("email")
-income = get_data("income")
-employer = get_data("employer")
-loan_amount = get_data("loan_amount")
-installments = get_data("installments")
-score = get_data("score")
-result = get_data("result")
+email = payload["email"]
+income = payload["income"]
+employer = payload["employer"]
+loan_amount = payload["loan_amount"]
+installments = payload["installments"]
+
 
 html = f"""
 <html>
@@ -63,3 +65,5 @@ sg = SendGridAPIClient(sendgrid_token)
 response = sg.send(message)
 
 print(response.status_code)
+
+task.complete()

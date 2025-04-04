@@ -1,4 +1,4 @@
-from abstra.workflows import get_data
+from abstra.tasks import get_trigger_task
 from dotenv import load_dotenv
 from abstra.connectors import get_access_token
 import os
@@ -6,16 +6,19 @@ import requests
 
 load_dotenv()
 slack_token = get_access_token("slack").token
-name = get_data("name")
-email = get_data("email")
-income = get_data("income")
-employer = get_data("employer")
-loan_amount = get_data("loan_amount")
-installments = get_data("installments")
-score = get_data("score")
-result = get_data("result")
-rejection_reason = get_data("rejection_reason")
-reviewing_user = get_data("reviewing_user")
+
+task = get_trigger_task()
+payload = task.get_payload()
+
+name = payload["name"]
+email = payload["email"]
+income = payload["income"]
+employer = payload["employer"]
+loan_amount = payload["loan_amount"]
+installments = payload["installments"]
+score = payload["score"]
+rejection_reason = payload["rejection_reason"]
+reviewing_user = payload.get("reviewing_user", "Automatically Reviewed")
 
 res = requests.post(
         'https://slack.com/api/chat.postMessage',
@@ -40,3 +43,5 @@ res = requests.post(
     })
 
 print(res)
+
+task.complete()
